@@ -15,6 +15,7 @@ import sys
 from PyQt5.QtWidgets import QApplication
 import mainwindow
 from commands import command_view
+from commands import command_controller
 from motorvariant import motor_variant_tab, motor_config_controller
 from Piezovariant import piezo_variant_tab
 from towervariant import tower_variant
@@ -51,7 +52,7 @@ if __name__ == "__main__":
 
     window = mainwindow.App()
 
-    command = command_view.CommandView()
+    command = command_controller.CommandController()
     piezo_variant_tab = piezo_variant_tab.PiezoVariantTab()
     tower_variant = tower_variant.TowerVariant()
     motor_variant_tab = motor_variant_tab.MotorVariantTab()
@@ -60,7 +61,7 @@ if __name__ == "__main__":
     drivesystem_tab = drivesystem_tab.DriveSystemTab()
     piezo_tab = piezo_tab.PiezoTab()
 
-    window.addTabView(command, "Commands")
+    window.addTabView(command.view, "Commands")
     window.addTabView(motor_variant_tab, "MotorVairant")
     window.addTabView(piezo_variant_tab, "PiezoVariant")
     window.addTabView(tower_variant, "TowerVariant")

@@ -1,0 +1,30 @@
+DriveLabel:
+  Type: 
+    string
+  Range:
+    min: STRINGMIN
+    max: STRINGMAX
+ModuleName:
+  Type: 
+    char
+  Range:
+    min: A
+    max: Z
+DriveName:
+  Type: 
+    char
+  Range:
+    min: A
+    max: Z
+IdentifyNumber:
+  Type: 
+    uint32
+  Range:
+    min: UINT32MIN
+    max: UINT32MAX
+Variant_CRC:
+  Type: 
+    uint32
+  Range:
+    min: UINT32MIN
+    max: UINT32MAX
