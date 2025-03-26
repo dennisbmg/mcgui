@@ -1,0 +1,43 @@
+Motor Variant 0:
+  categories: 
+    - Type
+    - BaseCtrlType
+    - DriveLabel
+    - ModuleName
+    - DriveName
+    - MotorType
+  config:
+    Type:
+      data_type: uint
+      valid_range: range
+      min_value: 0
+      max_value: 10
+    BaseCtrlType:
+      data_type: uint
+      valid_range: range
+      min_value: 0
+      max_value: 10
+    DriveLabel:
+      data_type: uint
+      valid_range: discrete
+      values:
+        - A
+        - B
+        - C
+    ModuleName:
+      data_type: uint
+      valid_range: discrete
+      values:
+        - A
+        - B
+        - C
+    DriveName:
+      data_type: uint
+      valid_range: range
+      min_value: c
+      max_value: f
+    MotorType:
+      data_type: uint
+      valid_range: range
+      min_value: 0
+      max_value: 10

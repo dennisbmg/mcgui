@@ -1,0 +1,13 @@
+QPushButton {
+	width: 150px;
+	height: 25px;
+}
+
+QComboBox {
+	width: 130px;
+	height: 25px;
+}
+
+QLabel {
+	font-size: 16px;
+}
