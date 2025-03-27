@@ -1,12 +1,11 @@
 from . import command_view
 from PyQt5.QtWidgets import QWidget
-from terminal import Terminal
 
 class CommandController(QWidget):
-    def __init__(self):
+    def __init__(self, terminal):
         super().__init__()
         self.view = command_view.CommandView()
-        self.terminal = Terminal()
+        self.terminal = terminal
         
         self.terminal.response_received.connect(self.display_response)
         self.terminal.error_occurred.connect(self.display_error)

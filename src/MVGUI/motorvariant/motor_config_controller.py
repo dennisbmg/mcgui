@@ -1,42 +1,116 @@
+from PyQt5.QtWidgets import QDoubleSpinBox, QLineEdit, QPushButton, QLabel, QSpinBox
 from . import motor_variant_tab
 from . import motor_config_model
+import yaml
 
 
 class MotorConfigController():
-    def __init__(self, index):
+    def __init__(self, index, terminal):
         self.index = index
-        categories = ["Type", "BaseCtrlType", "DriveLabel", "ModuleName", "DriveName", "MotorType"]
+        self.terminal = terminal
 
-        self.isValid = {}
-        for key in categories:
-            self.isValid[key] = True
+        self.config_data = self.read_config("motor_variant_config.yaml")
+        self.global_param = self.get_global_param(self.config_data)
+        self.categories = self.get_categories(self.config_data)
+        self.commands = self.build_commands()
+
+        self.is_valid = {}
+        for key in self.categories:
+            self.is_valid[key] = False
 
         self.view = motor_variant_tab.MotorConfigView()
         self.model = motor_config_model.MotorConfigModel()
+        
+        self.view.data_types = self.get_datatypes("datatypes.yaml")
 
-        for key in categories:
-            self.view.input[key].editingFinished.connect(lambda key=key: self.textInputChanged(key))
-            self.view.setButtons[key].pressed.connect(lambda key=key: self.buttonPressed(key))
+        print(self.categories)
+        for key in self.categories:
+            if self.config_data[key]["Type"] == "char":
+                self.view.add_item(key, QLineEdit)
 
-    def textInputChanged(self, name):
-        inputNumber = int(self.view.input[name].text())
-        isValid = self.model.isValid(name, inputNumber)
-        self.view.setButtons[name].setEnabled(isValid)
-        self.isValid[name] = isValid
+                # assign key to value to handle callback
+                self.view.input[key].textChanged.connect(lambda value=key, key=key: self.text_input_changed(key))
+                self.view.setButtons[key].clicked.connect(lambda value=key, key=key: self.button_pressed_text(key))
+            elif self.config_data[key]["Type"] == "string":
+                self.view.add_item(key, QLineEdit)
+
+                self.view.input[key].textChanged.connect(lambda value=key, key=key: self.text_input_changed(key))
+                self.view.setButtons[key].clicked.connect(lambda value=key, key=key: self.button_pressed_text(key))
+            elif self.config_data[key]["Type"] == "float":
+                self.view.add_item(key, QDoubleSpinBox)
+
+                self.view.input[key].valueChanged.connect(lambda value=key, key=key: self.number_input_changed(key))
+                self.view.setButtons[key].clicked.connect(lambda value=key, key=key: self.button_pressed_text(key))
+            else:
+                self.view.add_item(key, QSpinBox)
+
+                self.view.input[key].valueChanged.connect(lambda value=key, key=key: self.number_input_changed(key))
+                self.view.setButtons[key].clicked.connect(lambda value=key, key=key: self.button_pressed_number(key))
+            self.model.add_data(key, self.config_data)
+
+
+    def text_input_changed(self, name):
+        input_text = self.view.input[name].text()
+        is_valid = self.model.is_valid(name, input_text)
+        self.view.setButtons[name].setEnabled(is_valid)
+        self.is_valid[name] = is_valid
         self.updateAllButton()
-       
 
-    def buttonPressed(self, name):
-        inputNumber = int(self.view.input[name].text())
-        succeeded = self.model.setValue(name, inputNumber)
+    def number_input_changed(self, name): 
+        print(f"DEBUG:This key is called: {name}")
+        input_number = self.view.input[name].value()
+        is_valid = self.model.is_valid(name, input_number)
+        self.view.setButtons[name].setEnabled(is_valid)
+        self.is_valid[name] = is_valid
+        self.updateAllButton()
+
+    def button_pressed_text(self, name):
+        input_number = self.view.input[name].text()
+        succeeded = self.model.set_value(name, input_number)
+        self.terminal.send_command("help")
+      
+        if not succeeded:
+            self.view.input[name].setText(str(self.model.get_value(name)))
+
+    def button_pressed_number(self, name):
+        inputNumber = self.view.input[name].value()
+        succeeded = self.model.set_value(name, inputNumber)
+        command = self.commands[name]
+        self.terminal.send_command("help")
        
         if not succeeded:
-            self.view.input[name].setText(str(self.model.getValue(name)))
+            self.view.input[name].setValue(self.model.get_value(name))
 
     def updateAllButton(self):
         allEnabled = True
-        for key, flag in self.isValid.items():
+        for key, flag in self.is_valid.items():
             print(f"{key} {flag}")
             allEnabled = allEnabled and flag
-
         self.view.buttonAll.setEnabled(allEnabled)
+
+    def read_config(self, filename):
+        with open(filename, "r", encoding="utf-8") as file:
+            return yaml.safe_load(file)
+
+    def get_categories(self, data):
+        cat = []
+        for key in data:
+            if key == "GlobalName":
+                continue
+            cat.append(key)
+        return cat
+            
+    def get_global_param(self, data):
+        param = data["GlobalName"]
+        x = param.replace("<index>", str(self.index))
+        return x
+    
+    def build_commands(self):
+        com = {}
+        for key in self.categories:
+            com[key] = self.global_param + "." + key
+        return com
+        
+    def get_datatypes(self, filename):
+        with open(filename, "r", encoding="utf-8") as file:
+            return yaml.safe_load(file)

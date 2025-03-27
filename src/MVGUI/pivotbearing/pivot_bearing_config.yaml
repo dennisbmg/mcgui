@@ -1,10 +1,3 @@
-Pivot Bearing:
-  TypeList:
-    - General
-    - Controll[2]
-    - DriveParam
-    - SavePosition[15]
-
 General:
     MagicNumber: 
       Type:

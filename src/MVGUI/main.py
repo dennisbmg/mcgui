@@ -14,7 +14,6 @@ Author: Name (mail)
 import sys
 from PyQt5.QtWidgets import QApplication
 import mainwindow
-from commands import command_view
 from commands import command_controller
 from motorvariant import motor_variant_tab, motor_config_controller
 from Piezovariant import piezo_variant_tab
@@ -23,6 +22,7 @@ from commonblock import commonblock_tab
 from pivotbearing import pivot_bearing_tab
 from drivesystem import drivesystem_tab
 from piezo import piezo_tab
+from terminal import Terminal
 import logging
 
 try:
@@ -52,7 +52,8 @@ if __name__ == "__main__":
 
     window = mainwindow.App()
 
-    command = command_controller.CommandController()
+    terminal = Terminal()
+    command = command_controller.CommandController(terminal)
     piezo_variant_tab = piezo_variant_tab.PiezoVariantTab()
     tower_variant = tower_variant.TowerVariant()
     motor_variant_tab = motor_variant_tab.MotorVariantTab()
@@ -72,8 +73,8 @@ if __name__ == "__main__":
 
 
     motor_controllers = []
-    for no_motors in range(2):
-        controller = motor_config_controller.MotorConfigController(no_motors)
+    for index in range(2):
+        controller = motor_config_controller.MotorConfigController(index, terminal)
         motor_controllers.append(controller)
         motor_variant_tab.register_tab(controller.view)
  

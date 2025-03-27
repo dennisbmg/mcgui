@@ -1,30 +1,30 @@
 DriveLabel:
   Type: 
-    string
+    string #check for max length if type is string
   Range:
-    min: STRINGMIN
-    max: STRINGMAX
+    max: 20
+    min: MINSTRING
 ModuleName:
   Type: 
     char
   Range:
-    min: A
     max: Z
+    min: A
 DriveName:
   Type: 
     char
   Range:
-    min: A
     max: Z
+    min: A
 IdentifyNumber:
   Type: 
     uint32
   Range:
-    min: UINT32MIN
-    max: UINT32MAX
+    max: MAXUINT32
+    min: MINUINT32
 Variant_CRC:
   Type: 
     uint32
   Range:
-    min: UINT32MIN
-    max: UINT32MAX
+    max: MAXUINT32
+    min: MINUINT32
