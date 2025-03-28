@@ -1,0 +1,41 @@
+GlobalName:
+  VariantArea.VariantData.MotorVariant[<index>]
+General:
+  SavelastDACvalue:
+    Type:
+      uint8
+    Range:
+      max: 1
+      min: 0
+    ValidCallback:
+      range
+  EmergencyStopTaskEnable:
+    Type:
+      uint8
+    Range:
+      max: 1
+      min: 0
+    ValidCallback:
+      range
+  NotMoveTaskEnable:
+    Type:
+      uint8
+    Range:
+      max: 1
+      min: 0
+    ValidCallback:
+      range
+
+# check value in range: range
+# check value of string is less then max characters: string
+# check value is in list: list
+# if list: replace max and min with a list of valid values
+# for example: 
+#
+# DriveLabel:
+#   Type:
+#     char/uint8
+#   Range:
+#     - A/4
+#     - B/7
+#     - C/8

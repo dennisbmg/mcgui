@@ -1,4 +1,4 @@
-from PyQt5.QtWidgets import QWidget, QTabWidget, QVBoxLayout, QGridLayout, QPushButton, QLabel, QLineEdit
+from PyQt5.QtWidgets import QComboBox, QDoubleSpinBox, QSpinBox, QWidget, QTabWidget, QVBoxLayout, QGridLayout, QPushButton, QLabel, QLineEdit
 from PyQt5.Qt import Qt
 
 class CommonBlockTab(QWidget):
@@ -27,30 +27,36 @@ class CommonBlockView(QWidget):
         self.grid = QGridLayout()
         self.grid.setSpacing(100)
 
-        categories = ["Type", "BaseCtrlType", "DriveLabel", "ModuleName", "DriveName", "MotorType"]
         self.labels = {}
         self.input = {}
         self.setButtons = {}
-
-        row = 0
-        for cat in categories:
-            label = QLabel()
-            label.setText(cat)
-            self.grid.addWidget(label, row, 0, alignment=Qt.AlignLeft)
-
-            text = QLineEdit()
-            self.grid.addWidget(text, row, 1, alignment=Qt.AlignLeft)
-
-
-            button = QPushButton("Set")
-            self.grid.addWidget(button, row, 2, alignment=Qt.AlignLeft)
-
-            
-            self.labels[cat] = label
-            self.input[cat] = text
-            self.setButtons[cat] = button
-            row += 1
-
         self.buttonAll = QPushButton("SetAll")
-        self.grid.addWidget(self.buttonAll, row, 2, alignment=Qt.AlignLeft)
+        self.buttonAll.setDisabled(True)
+        self.grid.addWidget(self.buttonAll,5, 2, alignment=Qt.AlignLeft)
         self.setLayout(self.grid)
+
+        self.row = 0
+        
+        
+    def add_item(self, name, input_element):
+        column_label = 0
+        column_input = 1
+        column_button = 2
+        label = QLabel()
+        label.setText(name)
+        self.grid.addWidget(label, self.row, column_label, alignment=Qt.AlignCenter)
+        self.labels[name] = label
+
+        input = input_element()
+        label.setText(name)
+        self.grid.addWidget(input, self.row, column_input, alignment=Qt.AlignCenter)
+        self.input[name] = input
+        print(f"DEBUG: Created input widget for {name}: {type(input)}")       
+
+        button = QPushButton("Set")
+        button.setDisabled(True)
+        label.setText(name)
+        self.grid.addWidget(button, self.row, column_button, alignment=Qt.AlignCenter)
+        self.setButtons[name] = button
+
+        self.row += 1
