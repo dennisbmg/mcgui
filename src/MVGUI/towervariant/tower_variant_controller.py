@@ -1,13 +1,13 @@
 from PyQt5.QtWidgets import QDoubleSpinBox, QLineEdit, QPushButton, QLabel, QSpinBox
-from . import motor_variant_tab
-from . import motor_config_model
+from . import tower_variant_tab
+from . import tower_variant_model
 import yaml
 
 
-class MotorConfigController():
-    def __init__(self, index, terminal):
-        self.index = index
+class TowerVariantController():
+    def __init__(self, terminal):
         self.terminal = terminal
+        self.index = 0
 
         self.config_data = self.read_config("motor_variant_config.yaml")
         self.data_types = self.get_datatypes("datatypes.yaml")
@@ -19,8 +19,8 @@ class MotorConfigController():
         for key in self.categories:
             self.is_valid[key] = False
 
-        self.view = motor_variant_tab.MotorConfigView()
-        self.model = motor_config_model.MotorConfigModel()
+        self.view = tower_variant_tab.TowerVariantView()
+        self.model = tower_variant_model.TowerVariantModel()
         
         for key in self.categories:
             if self.config_data[key]["Type"] == "char":

@@ -1,0 +1,56 @@
+GlobalName:
+  TowerVariant[<index>]
+DriveLabel:
+  Type:
+    string #check for max length if type is string
+  Range:
+    max: 20
+    min: MIN
+  ValidCallback:
+    range
+ModuleName:
+  Type:
+    char
+  Range:
+    max: Z
+    min: A
+  ValidCallback:
+    range
+DriveName:
+  Type:
+    char
+  Range:
+    max: Z
+    min: A
+  ValidCallback:
+   range
+IdentifyNumber:
+  Type:
+    uint32
+  Range:
+    max: MAX
+    min: MIN
+  ValidCallback:
+    range
+Variant_CRC:
+  Type:
+    uint32
+  Range:
+    max: MAX
+    min: MIN
+  ValidCallback:
+    range
+
+# check value in range: range
+# check value of string is less then max characters: string
+# check value is in list: list
+# if list: replace max and min with a list of valid values
+# for example: 
+#
+# DriveLabel:
+#   Type:
+#     char/uint8
+#   Range:
+#     - A/4
+#     - B/7
+#     - C/8
