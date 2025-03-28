@@ -46,27 +46,23 @@ class MotorConfigModel():
 
 
 
-    def add_data(self, name, data):
-        self.categories.append(name)
-        if data[name]["ValidCallback"] == "range":
+    def add_data(self, name, min, max, callback):
+        self.min_threshold[name] = min
+        self.max_threshold[name] = max
+        if callback == "range":
             self.valid_callback[name] = self.is_valid_range
-        elif data[name]["ValidCallback"] == "discrete": 
-            self.valid_callback[name] = self.is_valid_discrete
-        elif data[name]["ValidCallback"] == "string":
+
+        elif callback == "string":
             self.valid_callback[name] = self.is_valid_string
-        else:
-            print(data[name]["ValidCallback"])
-            raise NotImplementedError()
 
-  #      if data[name]["Range"]["min"] in "MIN":
-  #          self.min_threshold[name] = self.data_types[data]["Type"]["min"]
-  #      if data[name]["Range"]["max"] in "MAX":
-  #          self.min_threshold[name] = self.data_types[data]["Type"]["max"]
-            
+        elif callback == "discrete":
+            self.valid_callback[name] = self.is_valid_discrete
 
 
-        self.min_threshold[name] = 0#int(data[name]["Range"]["min"])
-        self.max_threshold[name] = 20#int(data[name]["Range"]["max"])
+
+
+
+
 
 
 

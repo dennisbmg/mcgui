@@ -10,6 +10,7 @@ class MotorConfigController():
         self.terminal = terminal
 
         self.config_data = self.read_config("motor_variant_config.yaml")
+        self.data_types = self.get_datatypes("datatypes.yaml")
         self.global_param = self.get_global_param(self.config_data)
         self.categories = self.get_categories(self.config_data)
         self.commands = self.build_commands()
@@ -21,14 +22,12 @@ class MotorConfigController():
         self.view = motor_variant_tab.MotorConfigView()
         self.model = motor_config_model.MotorConfigModel()
         
-        self.view.data_types = self.get_datatypes("datatypes.yaml")
-
-        print(self.categories)
         for key in self.categories:
             if self.config_data[key]["Type"] == "char":
                 self.view.add_item(key, QLineEdit)
 
-                # assign key to value to handle callback
+                # had a problem with callbacks not returning the expected key 
+                # assining key to value first is a workaround to get the expected key
                 self.view.input[key].textChanged.connect(lambda value=key, key=key: self.text_input_changed(key))
                 self.view.setButtons[key].clicked.connect(lambda value=key, key=key: self.button_pressed_text(key))
             elif self.config_data[key]["Type"] == "string":
@@ -46,7 +45,19 @@ class MotorConfigController():
 
                 self.view.input[key].valueChanged.connect(lambda value=key, key=key: self.number_input_changed(key))
                 self.view.setButtons[key].clicked.connect(lambda value=key, key=key: self.button_pressed_number(key))
-            self.model.add_data(key, self.config_data)
+
+            min = self.config_data[key]["Range"]["min"]
+            if min == "MIN":
+                min = self.data_types[self.config_data[key]["Type"]]["min"]
+            
+            max = self.config_data[key]["Range"]["max"]  
+            if max == "MAX":
+                max = self.config_data[key]["Range"]["max"]  
+
+
+            self.model.add_data(key, min, max, self.config_data[key]["ValidCallback"])
+            print(f"Key: {key} min: {min} max: {max} callback: {self.config_data[key]['ValidCallback']}")
+            
 
 
     def text_input_changed(self, name):
@@ -57,7 +68,6 @@ class MotorConfigController():
         self.updateAllButton()
 
     def number_input_changed(self, name): 
-        print(f"DEBUG:This key is called: {name}")
         input_number = self.view.input[name].value()
         is_valid = self.model.is_valid(name, input_number)
         self.view.setButtons[name].setEnabled(is_valid)

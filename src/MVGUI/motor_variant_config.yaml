@@ -13,7 +13,7 @@ DriveLabel:
     string #check for max length if type is string
   Range:
     max: 20
-    min: MINSTRING
+    min: MIN
   ValidCallback:
     string
 ModuleName:
@@ -35,9 +35,10 @@ DriveName:
 
 # check value in range: range
 # check value of string is less then max characters: string
-# check value is in list: is_valid_list
-# if is_valid_list: replace max and min with a list of valid values
+# check value is in list: list
+# if list: replace max and min with a list of valid values
 # for example: 
+#
 # DriveLabel:
 #   Type:
 #     char/uint8
