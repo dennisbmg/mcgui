@@ -40,7 +40,7 @@ class MotorConfigController():
 
                 self.view.input[key].valueChanged.connect(lambda value=key, key=key: self.number_input_changed(key))
                 self.view.setButtons[key].clicked.connect(lambda value=key, key=key: self.button_pressed_text(key))
-            else:
+            elif "int" in self.config_data[key]["Type"]:
                 self.view.add_item(key, QSpinBox)
 
                 self.view.input[key].valueChanged.connect(lambda value=key, key=key: self.number_input_changed(key))
@@ -54,8 +54,13 @@ class MotorConfigController():
             if max == "MAX":
                 max = self.config_data[key]["Range"]["max"]  
 
+            if self.config_data[key]["ValidCallback"] == "range" or self.config_data[key]["ValidCallback"] == "string":
+                self.model.add_data_range(key, min, max, self.config_data[key]["ValidCallback"])
 
-            self.model.add_data(key, min, max, self.config_data[key]["ValidCallback"])
+            elif self.config_data[key]["ValidCallback"] == list:
+                self.model.add_data_range(key, min, max, self.config_data[key]["Range"])
+
+
             print(f"Key: {key} min: {min} max: {max} callback: {self.config_data[key]['ValidCallback']}")
             
 
@@ -75,26 +80,22 @@ class MotorConfigController():
         self.updateAllButton()
 
     def button_pressed_text(self, name):
-        input_number = self.view.input[name].text()
-        succeeded = self.model.set_value(name, input_number)
-        self.terminal.send_command("help")
+        input_text = self.view.input[name].text()
+        succeeded = self.model.set_value(name, input_text)
+        command = f"eeset {self.commands[name]} {input_text}"
+        self.terminal.send_command(command)
       
-        if not succeeded:
-            self.view.input[name].setText(str(self.model.get_value(name)))
-
     def button_pressed_number(self, name):
         inputNumber = self.view.input[name].value()
         succeeded = self.model.set_value(name, inputNumber)
-        command = self.commands[name]
-        self.terminal.send_command("help")
-       
-        if not succeeded:
-            self.view.input[name].setValue(self.model.get_value(name))
+        command =f"eeset {self.commands[name]} {inputNumber}"
+        self.terminal.send_command(command)
+        self.view.setButtons[name].setEnabled(False)
 
     def updateAllButton(self):
         allEnabled = True
         for key, flag in self.is_valid.items():
-            print(f"{key} {flag}")
+            #print(f"{key} {flag}")
             allEnabled = allEnabled and flag
         self.view.buttonAll.setEnabled(allEnabled)
 

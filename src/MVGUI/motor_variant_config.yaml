@@ -1,5 +1,5 @@
 GlobalName:
-  MotorVariant[<index>]
+  VariantArea.VariantData.MotorVariant[<index>]
 Type:
   Type:
     int8
@@ -31,7 +31,7 @@ DriveName:
     max: Z
     min: A
   ValidCallback:
-    range
+   range
 
 # check value in range: range
 # check value of string is less then max characters: string

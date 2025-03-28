@@ -27,7 +27,6 @@ class MotorConfigView(QWidget):
         self.grid = QGridLayout()
         self.grid.setSpacing(100)
 
-#        categories = ["Type", "BaseCtrlType", "DriveLabel", "ModuleName", "DriveName", "MotorType"]
         self.labels = {}
         self.input = {}
         self.setButtons = {}
@@ -60,33 +59,4 @@ class MotorConfigView(QWidget):
         self.grid.addWidget(button, self.row, column_button, alignment=Qt.AlignCenter)
         self.setButtons[name] = button
 
-
-
         self.row += 1
-
-
-
-        
-        
-        
-        
-            
-
-#        for cat in categories:
-#            label = QLabel()
-#            label.setText(cat)
-#            self.grid.addWidget(label, row, 0, alignment=Qt.AlignLeft)
-#
-#            text = QLineEdit()
-#            self.grid.addWidget(text, row, 1, alignment=Qt.AlignLeft)
-#
-#
-#            button = QPushButton("Set")
-#            self.grid.addWidget(button, row, 2, alignment=Qt.AlignLeft)
-#
-#            
-#            self.labels[cat] = label
-#            self.input[cat] = text
-#            self.setButtons[cat] = button
-#            row += 1
-#
