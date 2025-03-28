@@ -1,4 +1,4 @@
-class MotorConfigModel():
+class PiezoVariantModel():
 
     def __init__(self):
         self.categories = []
