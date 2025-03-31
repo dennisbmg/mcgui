@@ -52,7 +52,7 @@ class MotorConfigController():
             
             max = self.config_data[key]["Range"]["max"]  
             if max == "MAX":
-                max = self.config_data[key]["Range"]["max"]  
+                max = self.data_types[self.config_data[key]["Type"]]["max"]
 
             if self.config_data[key]["ValidCallback"] == "range" or self.config_data[key]["ValidCallback"] == "string":
                 self.model.add_data_range(key, min, max, self.config_data[key]["ValidCallback"])
