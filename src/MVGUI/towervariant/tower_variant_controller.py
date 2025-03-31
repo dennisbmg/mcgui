@@ -9,11 +9,13 @@ class TowerVariantController():
         self.terminal = terminal
         self.index = 0
 
-        self.config_data = self.read_config("motor_variant_config.yaml")
+        self.config_data = self.read_config("tower_variant_config.yaml")
         self.data_types = self.get_datatypes("datatypes.yaml")
         self.global_param = self.get_global_param(self.config_data)
         self.categories = self.get_categories(self.config_data)
         self.commands = self.build_commands()
+        print(f"TowerVariant command names: {self.commands}")
+
 
         self.is_valid = {}
         for key in self.categories:
@@ -120,7 +122,11 @@ class TowerVariantController():
     def build_commands(self):
         com = {}
         for key in self.categories:
-            com[key] = self.global_param + "." + key
+            if key == "IdentifyNumber" or key == "Variant_CRC":
+                com[key] = "VariantArea" + "." + key
+            else:
+                com[key] = self.global_param + "." + key
+
         return com
         
     def get_datatypes(self, filename):

@@ -25,6 +25,35 @@ General:
       min: 0
     ValidCallback:
       range
+PosInformer_Cycle:
+  PosInformer_Cycle[6]:
+    Type:
+      uint32
+    Range:
+      max: MAX
+      min: MIN
+    ValidCallback:
+      range
+TrajecotryGen_Cycle:
+  TrajectoryGen_Cycle[2]:
+    Type:
+      uint32
+    Range:
+      max: MAX
+      min: MIN
+    ValidCallback:
+      range
+PiezoIncTask_Cycle:
+  PiezoIncTask_Cycle[3]:
+    Type:
+      uint32
+    Range:
+      max: MAX
+      min: MIN
+    ValidCallback:
+      range
+
+  
 
 # check value in range: range
 # check value of string is less then max characters: string
