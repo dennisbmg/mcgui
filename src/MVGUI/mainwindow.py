@@ -10,8 +10,10 @@ class App(QMainWindow):
         self.title = "MC GUI" 
         self.left = 0
         self.top = 0
+        self.height = 0
+        self.width = 670
         self.setWindowTitle(self.title)
-        #self.setGeometry(self.left, self.top, self.width, self.height)
+        self.setGeometry(self.left, self.top, self.width, self.height)
 
         self.menu_bar = self.menuBar()
         self.connect_menu = self.menu_bar.addMenu("Connect")

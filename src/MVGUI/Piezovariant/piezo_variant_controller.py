@@ -61,7 +61,7 @@ class PiezoVariantController():
                 self.model.add_data_range(key, min, max, self.config_data[key]["Range"])
 
 
-            print(f"Key: {key} min: {min} max: {max} callback: {self.config_data[key]['ValidCallback']}")
+#            print(f"Key: {key} min: {min} max: {max} callback: {self.config_data[key]['ValidCallback']}")
             
 
 

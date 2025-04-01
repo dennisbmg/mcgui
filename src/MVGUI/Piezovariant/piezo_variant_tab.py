@@ -51,7 +51,7 @@ class PiezoVariantView(QWidget):
         label.setText(name)
         self.grid.addWidget(input, self.row, column_input, alignment=Qt.AlignCenter)
         self.input[name] = input
-        print(f"DEBUG: Created input widget for {name}: {type(input)}")       
+#        print(f"DEBUG: Created input widget for {name}: {type(input)}")       
 
         button = QPushButton("Set")
         button.setDisabled(True)

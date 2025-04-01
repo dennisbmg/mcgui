@@ -14,7 +14,7 @@ class TowerVariantController():
         self.global_param = self.get_global_param(self.config_data)
         self.categories = self.get_categories(self.config_data)
         self.commands = self.build_commands()
-        print(f"TowerVariant command names: {self.commands}")
+#        print(f"TowerVariant command names: {self.commands}")
 
 
         self.is_valid = {}
@@ -63,7 +63,7 @@ class TowerVariantController():
                 self.model.add_data_range(key, min, max, self.config_data[key]["Range"])
 
 
-            print(f"Key: {key} min: {min} max: {max} callback: {self.config_data[key]['ValidCallback']}")
+#            print(f"Key: {key} min: {min} max: {max} callback: {self.config_data[key]['ValidCallback']}")
             
 
 

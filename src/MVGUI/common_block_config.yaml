@@ -1,5 +1,5 @@
 GlobalName:
-  VariantArea.VariantData.MotorVariant[<index>]
+  CommonBlock
 General:
   SavelastDACvalue:
     Type:
@@ -26,7 +26,47 @@ General:
     ValidCallback:
       range
 PosInformer_Cycle:
-  PosInformer_Cycle[6]:
+  PosInformer_Cycle[0]:
+    Type:
+      uint32
+    Range:
+      max: MAX
+      min: MIN
+    ValidCallback:
+      range
+  PosInformer_Cycle[1]:
+    Type:
+      uint32
+    Range:
+      max: MAX
+      min: MIN
+    ValidCallback:
+      range
+  PosInformer_Cycle[2]:
+    Type:
+      uint32
+    Range:
+      max: MAX
+      min: MIN
+    ValidCallback:
+      range
+  PosInformer_Cycle[3]:
+    Type:
+      uint32
+    Range:
+      max: MAX
+      min: MIN
+    ValidCallback:
+      range
+  PosInformer_Cycle[4]:
+    Type:
+      uint32
+    Range:
+      max: MAX
+      min: MIN
+    ValidCallback:
+      range
+  PosInformer_Cycle[5]:
     Type:
       uint32
     Range:
@@ -35,7 +75,15 @@ PosInformer_Cycle:
     ValidCallback:
       range
 TrajecotryGen_Cycle:
-  TrajectoryGen_Cycle[2]:
+  TrajectoryGen_Cycle[0]:
+    Type:
+      uint32
+    Range:
+      max: MAX
+      min: MIN
+    ValidCallback:
+      range
+  TrajectoryGen_Cycle[1]:
     Type:
       uint32
     Range:
@@ -44,7 +92,23 @@ TrajecotryGen_Cycle:
     ValidCallback:
       range
 PiezoIncTask_Cycle:
-  PiezoIncTask_Cycle[3]:
+  PiezoIncTask_Cycle[0]:
+    Type:
+      uint32
+    Range:
+      max: MAX
+      min: MIN
+    ValidCallback:
+      range
+  PiezoIncTask_Cycle[1]:
+    Type:
+      uint32
+    Range:
+      max: MAX
+      min: MIN
+    ValidCallback:
+      range
+  PiezoIncTask_Cycle[2]:
     Type:
       uint32
     Range:

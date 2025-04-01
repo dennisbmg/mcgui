@@ -12,13 +12,14 @@ Author: Name (mail)
 # Imports **********************************************************************
 
 import sys
-from PyQt5.QtWidgets import QApplication
+from PyQt5.QtWidgets import QApplication, QSpinBox, QDoubleSpinBox
 import mainwindow
+from example import model, view, controller
 from commands import command_controller
 from motorvariant import motor_variant_tab, motor_config_controller
 from Piezovariant import piezo_variant_tab, piezo_variant_controller
 from towervariant import tower_variant_tab, tower_variant_controller
-from commonblock import commonblock_tab
+from commonblock import common_block_controller, commonblock_tab
 from pivotbearing import pivot_bearing_tab
 from drivesystem import drivesystem_tab
 from piezo import piezo_tab
@@ -57,22 +58,27 @@ if __name__ == "__main__":
     #calling controller directly because we have no tabs to care about
     command = command_controller.CommandController(terminal)
     tower_variant = tower_variant_controller.TowerVariantController(terminal)
+    common_block = commonblock_tab.CommonBlockTab()
 
     piezo_variant_tab = piezo_variant_tab.PiezoVariantTab()
     motor_variant_tab = motor_variant_tab.MotorVariantTab()
-    common_block_tab = commonblock_tab.CommonBlockTab()
     pivot_bearing_tab = pivot_bearing_tab.PivotBearingTab()
     drivesystem_tab = drivesystem_tab.DriveSystemTab()
     piezo_tab = piezo_tab.PiezoTab()
+
+    examle = controller.Controller(terminal)
 
     window.addTabView(command.view, "Commands")
     window.addTabView(motor_variant_tab, "MotorVairant")
     window.addTabView(piezo_variant_tab, "PiezoVariant")
     window.addTabView(tower_variant.view, "TowerVariant")
-    window.addTabView(common_block_tab, "Common Block")
+    window.addTabView(examle.view, "Example")
+    #window.addTabView(tab1, "Common Block")
+    window.addTabView(common_block, "commonblock")
     window.addTabView(pivot_bearing_tab, "Pivot Bearing")
     window.addTabView(drivesystem_tab, "Drive System")
     window.addTabView(piezo_tab, "Piezo")
+
 
 
     motor_controllers = []

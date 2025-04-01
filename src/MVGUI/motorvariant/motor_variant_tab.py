@@ -42,20 +42,19 @@ class MotorConfigView(QWidget):
         column_label = 0
         column_input = 1
         column_button = 2
+
         label = QLabel()
         label.setText(name)
         self.grid.addWidget(label, self.row, column_label, alignment=Qt.AlignCenter)
         self.labels[name] = label
 
         input = input_element()
-        label.setText(name)
         self.grid.addWidget(input, self.row, column_input, alignment=Qt.AlignCenter)
         self.input[name] = input
-        print(f"DEBUG: Created input widget for {name}: {type(input)}")       
+#        print(f"DEBUG: Created input widget for {name}: {type(input)}")       
 
         button = QPushButton("Set")
         button.setDisabled(True)
-        label.setText(name)
         self.grid.addWidget(button, self.row, column_button, alignment=Qt.AlignCenter)
         self.setButtons[name] = button
 

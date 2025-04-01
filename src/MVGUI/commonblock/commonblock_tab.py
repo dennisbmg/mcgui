@@ -7,17 +7,12 @@ class CommonBlockTab(QWidget):
 
         self.layout = QVBoxLayout(self)
         self.tabs = QTabWidget()
-        self.tabs.resize(300,200)
-
         self.layout.addWidget(self.tabs)
         self.setLayout(self.layout)
-
         self.noTabs = 0
-       
 
     def register_tab(self, tab):
-        self.tabs.addTab(tab, f"Motor Variant {self.noTabs}")
-        #count for every tab that gets registered 
+        self.tabs.addTab(tab, f"Common Block {self.noTabs}")
         self.noTabs += 1
 
 class CommonBlockView(QWidget):
