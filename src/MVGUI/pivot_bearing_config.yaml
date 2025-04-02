@@ -1,0 +1,477 @@
+GlobalName:
+  General:
+    PivotBearing[<<index>>]
+  PostCtrl:
+    PostCtrl
+  DriveParam:
+    DriveParam
+  SavePosition:
+    DriveParam
+General:
+  MagicNumber:
+    Type:
+      uint8
+    Range:
+      - 0xAA
+    ValidCallback:
+      list
+  Encoder_TicksPerRevolution:
+    Type:
+      uint32
+    Range:
+      max: MAX
+      min: MIN
+    ValidCallback:
+      range
+  Hallsensor_TicksPerRevolution:
+    Type:
+      uint32
+    Range:
+      max: MAX
+      min: MIN
+    ValidCallback:
+      range
+PosCtrl:
+  KP:
+    Type:
+      float
+    Range:
+      max: MAX
+      min: MIN
+    ValidCallback:
+      range
+  KI:
+    Type:
+      float
+    Range:
+      max: MAX
+      min: MIN
+    ValidCallback:
+      range
+  MinOutLimit:
+    Type:
+      float
+    Range:
+      max: MAX
+      min: MIN
+    ValidCallback:
+      range
+  MaxOutLimit:
+    Type:
+      float
+    Range:
+      max: MAX
+      min: MIN
+    ValidCallback:
+      range
+  MinIntegratorLimit:
+    Type:
+      float
+    Range:
+      max: MAX
+      min: MIN
+    ValidCallback:
+      range
+  MaxIntegratorLimit:
+    Type:
+      float
+    Range:
+      max: MAX
+      min: MIN
+    ValidCallback:
+      range
+  mCtrlCycleDiv:
+    Type:
+      uint8
+    Range:
+      max: MAX
+      min: MIN
+    ValidCallback:
+      range
+RevolutionCtrl:
+  KP:
+    Type:
+      float
+    Range:
+      max: MAX
+      min: MIN
+    ValidCallback:
+      range
+  KI:
+    Type:
+      float
+    Range:
+      max: MAX
+      min: MIN
+    ValidCallback:
+      range
+  MinOutLimit:
+    Type:
+      float
+    Range:
+      max: MAX
+      min: MIN
+    ValidCallback:
+      range
+  MaxOutLimit:
+    Type:
+      float
+    Range:
+      max: MAX
+      min: MIN
+    ValidCallback:
+      range
+  MinIntegratorLimit:
+    Type:
+      float
+    Range:
+      max: MAX
+      min: MIN
+    ValidCallback:
+      range
+  MaxIntegratorLimit:
+    Type:
+      float
+    Range:
+      max: MAX
+      min: MIN
+    ValidCallback:
+      range
+  mCtrlCycleDiv:
+    Type:
+      uint8
+    Range:
+      max: MAX
+      min: MIN
+    ValidCallback:
+      range
+ CurrentCtrl:
+  KP:
+    Type:
+      float
+    Range:
+      max: MAX
+      min: MIN
+    ValidCallback:
+      range
+  KI:
+    Type:
+      float
+    Range:
+      max: MAX
+      min: MIN
+    ValidCallback:
+      range
+  MinOutLimit:
+    Type:
+      float
+    Range:
+      max: MAX
+      min: MIN
+    ValidCallback:
+      range
+  MaxOutLimit:
+    Type:
+      float
+    Range:
+      max: MAX
+      min: MIN
+    ValidCallback:
+      range
+  MinIntegratorLimit:
+    Type:
+      float
+    Range:
+      max: MAX
+      min: MIN
+    ValidCallback:
+      range
+  MaxIntegratorLimit:
+    Type:
+      float
+    Range:
+      max: MAX
+      min: MIN
+    ValidCallback:
+      range
+  mCtrlCycleDiv:
+    Type:
+      uint8
+    Range:
+      max: MAX
+      min: MIN
+    ValidCallback:
+      range 
+DriveParam:
+  MaxPwmDutyCycle:
+    Type:
+      uint8
+    Range:
+      max: 100
+      min: 0
+    ValidCallback:
+      range
+  PositionOffset:
+    Type:
+      int32
+    Range:
+      max: MAX
+      min: MIN
+    ValidCallback:
+      range
+  PosModeAcc:
+    Type:
+      uint32
+    Range:
+      max: MAX
+      min: MIN
+    ValidCallback:
+      range
+  PosModeSpeedLimit:
+    Type:
+      uint32
+    Range:
+      max: MAX
+      min: MIN
+    ValidCallback:
+      range
+  SpdModeAcc:
+    Type:
+      uint32
+    Range:
+      max: MAX
+      min: MIN
+    ValidCallback:
+      range
+  SpdModeSpeedLimit:
+    Type:
+      uint32
+    Range:
+      max: MAX
+      min: MIN
+    ValidCallback:
+      range
+  Speed_1:
+    Type:
+      uint32
+    Range:
+      max: MAX
+      min: MIN
+    ValidCallback:
+      range
+  Speed_2:
+    Type:
+      uint32
+    Range:
+      max: MAX
+      min: MIN
+    ValidCallback:
+      range
+  CalibSpeed:
+    Type:
+      uint32
+    Range:
+      max: MAX
+      min: MIN
+    ValidCallback:
+      range
+  SearchRefMarkSpeed:
+    Type:
+      uint32
+    Range:
+      max: MAX
+      min: MIN
+    ValidCallback:
+      range
+  PositioningWindow:
+    Type:
+      uint16
+    Range:
+      max: MAX
+      min: MIN
+    ValidCallback:
+      range
+  DriveTime:
+    Type:
+      uint32
+    Range:
+      max: MAX
+      min: MIN
+    ValidCallback:
+      range
+  NotMoveTime:
+    Type:
+      uint32
+    Range:
+      max: MAX
+      min: MIN
+    ValidCallback:
+      range
+  CalibSleepTimeTurnAround:
+    Type:
+      uint32
+    Range:
+      max: MAX
+      min: MIN
+    ValidCallback:
+      range
+  ADMeasurementSleepTime:
+    Type:
+      uint32
+    Range:
+      max: MAX
+      min: MIN
+    ValidCallback:
+      range
+  DistanceToEndStopMM:
+    Type:
+      uint32
+    Range:
+      max: MAX
+      min: MIN
+    ValidCallback:
+      range
+SavePosition:
+  SavePosition[0]:
+    Type:
+      uint32
+    Range:
+      max: MAX
+      min: MIN
+    ValidCallback:
+      range
+  SavePosition[1]:
+    Type:
+      uint32
+    Range:
+      max: MAX
+      min: MIN
+    ValidCallback:
+      range
+  SavePosition[2]:
+    Type:
+      uint32
+    Range:
+      max: MAX
+      min: MIN
+    ValidCallback:
+      range
+  SavePosition[3]:
+    Type:
+      uint32
+    Range:
+      max: MAX
+      min: MIN
+    ValidCallback:
+      range
+  SavePosition[4]:
+    Type:
+      uint32
+    Range:
+      max: MAX
+      min: MIN
+    ValidCallback:
+      range
+  SavePosition[5]:
+    Type:
+      uint32
+    Range:
+      max: MAX
+      min: MIN
+    ValidCallback:
+      range
+  SavePosition[6]:
+    Type:
+      uint32
+    Range:
+      max: MAX
+      min: MIN
+    ValidCallback:
+      range
+  SavePosition[7]:
+    Type:
+      uint32
+    Range:
+      max: MAX
+      min: MIN
+    ValidCallback:
+      range
+  SavePosition[8]:
+    Type:
+      uint32
+    Range:
+      max: MAX
+      min: MIN
+    ValidCallback:
+      range
+  SavePosition[9]:
+    Type:
+      uint32
+    Range:
+      max: MAX
+      min: MIN
+    ValidCallback:
+      range
+  SavePosition[10]:
+    Type:
+      uint32
+    Range:
+      max: MAX
+      min: MIN
+    ValidCallback:
+      range
+  SavePosition[11]:
+    Type:
+      uint32
+    Range:
+      max: MAX
+      min: MIN
+    ValidCallback:
+      range
+  SavePosition[12]:
+    Type:
+      uint32
+    Range:
+      max: MAX
+      min: MIN
+    ValidCallback:
+      range
+  SavePosition[13]:
+    Type:
+      uint32
+    Range:
+      max: MAX
+      min: MIN
+    ValidCallback:
+      range
+  SavePosition[14]:
+    Type:
+      uint32
+    Range:
+      max: MAX
+      min: MIN
+    ValidCallback:
+      range
+  SavePosition[15]:
+    Type:
+      uint32
+    Range:
+      max: MAX
+      min: MIN
+    ValidCallback:
+      range
+  
+
+# check value in range: range
+# check value of string is less then max characters: string
+# check value is in list: list
+# if list: replace max and min with a list of valid values
+# for example: 
+#
+# DriveLabel:
+#   Type:
+#     char/uint8
+#   Range:
+#     - A/4
+#     - B/7
+#     - C/8
