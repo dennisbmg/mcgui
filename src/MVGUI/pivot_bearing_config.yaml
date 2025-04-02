@@ -1,12 +1,12 @@
 GlobalName:
   General:
     PivotBearing[<<index>>]
-  PostCtrl:
-    PostCtrl
+  PosCtrl:
+    PivotBearing[<<index>>].PosCtrl
   DriveParam:
-    DriveParam
+    PivotBearing[<<index>>].DriveParam
   SavePosition:
-    DriveParam
+    PivotBearing[<<index>>].DriveParam
 General:
   MagicNumber:
     Type:
@@ -82,7 +82,7 @@ PosCtrl:
       range
   mCtrlCycleDiv:
     Type:
-      uint8
+      float
     Range:
       max: MAX
       min: MIN
@@ -139,13 +139,13 @@ RevolutionCtrl:
       range
   mCtrlCycleDiv:
     Type:
-      uint8
+      float
     Range:
       max: MAX
       min: MIN
     ValidCallback:
       range
- CurrentCtrl:
+CurrentCtrl:
   KP:
     Type:
       float
@@ -196,12 +196,12 @@ RevolutionCtrl:
       range
   mCtrlCycleDiv:
     Type:
-      uint8
+      float
     Range:
       max: MAX
       min: MIN
     ValidCallback:
-      range 
+      range
 DriveParam:
   MaxPwmDutyCycle:
     Type:

@@ -1,0 +1,224 @@
+GlobalName:
+  PivotBearing[<<index>>].DriveConfig
+CalibrationType:
+  Type:
+    uint8
+  Range:
+    max: 12
+    min: 0
+  ValidCallback:
+    range
+MaxAvailPositions:
+  Type:
+    uint8
+  Range:
+    max: MAX
+    min: MIN
+  ValidCallback:
+    range
+AbsPositionAfterCalib:
+  Type:
+    uint8
+  Range:
+    max: MAX
+    min: MIN
+  ValidCallback:
+    range
+AbsReferencePosition_k4:
+  Type:
+    uint8
+  Range:
+    max: MAX
+    min: MIN
+  ValidCallback:
+    range
+TicsBeforEndStop:
+  Type:
+    uint8
+  Range:
+    max: MAX
+    min: MIN
+  ValidCallback:
+    range
+EncLimitsOffset:
+  Type:
+    uint8
+  Range:
+    max: MAX
+    min: MIN
+  ValidCallback:
+    range
+MotorTurnOffAfterMove:
+  Type:
+    uint8
+  Range:
+    max: MAX
+    min: MIN
+  ValidCallback:
+    range
+CalibDirPositive:
+  Type:
+    uint8
+  Range:
+    max: MAX
+    min: MIN
+  ValidCallback:
+    range
+EncoderErrorTimeMS:
+  Type:
+    uint8
+  Range:
+    max: MAX
+    min: MIN
+  ValidCallback:
+    range
+EncoderErrorMonitoring:
+  Type:
+    uint8
+  Range:
+    max: MAX
+    min: MIN
+  ValidCallback:
+    range
+mBrakeAvailable:
+  Type:
+    uint8
+  Range:
+    max: MAX
+    min: MIN
+  ValidCallback:
+    range
+AutoCal:
+  Type:
+    uint8
+  Range:
+    max: MAX
+    min: MIN
+  ValidCallback:
+    range
+NoEmerStopCalibration:
+  Type:
+    uint8
+  Range:
+    max: MAX
+    min: MIN
+  ValidCallback:
+    range
+DriveLocked:
+  Type:
+    uint8
+  Range:
+    max: MAX
+    min: MIN
+  ValidCallback:
+    range
+LimitSwitchEnabled:
+  Type:
+    uint8
+  Range:
+    max: MAX
+    min: MIN
+  ValidCallback:
+    range
+EncLimitEnabled:
+  Type:
+    uint8
+  Range:
+    max: MAX
+    min: MIN
+  ValidCallback:
+    range
+DriveShortest:
+  Type:
+    uint8
+  Range:
+    max: MAX
+    min: MIN
+  ValidCallback:
+    range
+ResetPosAtZero:
+  Type:
+    uint8
+  Range:
+    max: MAX
+    min: MIN
+  ValidCallback:
+    range
+DriveVoltageEnabled:
+  Type:
+    uint8
+  Range:
+    max: MAX
+    min: MIN
+  ValidCallback:
+    range
+PolMotorBrakeHighActive:
+  Type:
+    uint8
+  Range:
+    max: MAX
+    min: MIN
+  ValidCallback:
+    range
+PolDacBrakeHighActive:
+  Type:
+    uint8
+  Range:
+    max: MAX
+    min: MIN
+  ValidCallback:
+    range
+PolLimitSwitchHighActive:
+  Type:
+    uint8
+  Range:
+    max: MAX
+    min: MIN
+  ValidCallback:
+    range
+RefSensorActive:
+  Type:
+    uint8
+  Range:
+    max: MAX
+    min: MIN
+  ValidCallback:
+    range
+PolRefSensorHighActive:
+  Type:
+    uint8
+  Range:
+    max: MAX
+    min: MIN
+  ValidCallback:
+    range
+MiddleSensorEnabled_k8:
+  Type:
+    uint8
+  Range:
+    max: MAX
+    min: MIN
+  ValidCallback:
+    range
+PolMiddleSensor_k8:
+  Type:
+    uint8
+  Range:
+    max: MAX
+    min: MIN
+  ValidCallback:
+    range
+
+# check value in range: range
+# check value of string is less then max characters: string
+# check value is in list: list
+# if list: replace max and min with a list of valid values
+# for example: 
+#
+# DriveLabel:
+#   Type:
+#     char/uint8
+#   Range:
+#     - A/4
+#     - B/7
+#     - C/8

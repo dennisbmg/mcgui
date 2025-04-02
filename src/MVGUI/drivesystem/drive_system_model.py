@@ -1,4 +1,5 @@
-class PivotBearingModel:
+class DriveSystemModel():
+
     def __init__(self):
         self.categories = []
         self.values = {}
@@ -28,10 +29,9 @@ class PivotBearingModel:
         return (value >= min) and (value <= max)
     
     def is_valid_discrete(self, name, value):
+        
         if value in self.list_threshold[name]:
             return True
-        else:
-            return False
     
     def is_valid_string(self, name, value):
         try:
@@ -54,6 +54,5 @@ class PivotBearingModel:
             self.valid_callback[name] = self.is_valid_string
 
     def add_data_discrete(self, name, list):
-        self.list_threshold[name] = list
+        self.list_threshold = list
         self.valid_callback[name] = self.is_valid_discrete
-

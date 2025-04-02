@@ -57,7 +57,7 @@ class CommonBlockController:
                     self.model.add_data_range(key, min, max, self.config_data[name][key]["ValidCallback"])
 
                 elif self.config_data[name][key]["ValidCallback"] == list:
-                    self.model.add_data_range(key, min, max, self.config_data[name][key]["Range"])
+                    self.model.add_data_discrete(key, self.config_data[name][key]["Range"])
 
             button_all = self.view.inner_views[name]["button_all"]
 

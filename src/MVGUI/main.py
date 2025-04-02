@@ -14,13 +14,13 @@ Author: Name (mail)
 import sys
 from PyQt5.QtWidgets import QApplication, QSpinBox, QDoubleSpinBox
 import mainwindow
-from example import common_block_model, common_block_view, common_block_controller
+from example import common_block_controller
 from commands import command_controller
 from motorvariant import motor_variant_tab, motor_config_controller
 from Piezovariant import piezo_variant_tab, piezo_variant_controller
-from towervariant import tower_variant_tab, tower_variant_controller
-from pivotbearing import pivot_bearing_tab
-from drivesystem import drivesystem_tab
+from towervariant import tower_variant_controller
+from pivotbearing import pivot_bearing_view, pivot_bearing_controller
+from drivesystem import drivesystem_view, drive_system_controller
 from piezo import piezo_tab
 from terminal import Terminal
 import logging
@@ -60,8 +60,8 @@ if __name__ == "__main__":
 
     piezo_variant_tab = piezo_variant_tab.PiezoVariantTab()
     motor_variant_tab = motor_variant_tab.MotorVariantTab()
-    pivot_bearing_tab = pivot_bearing_tab.PivotBearingTab()
-    drivesystem_tab = drivesystem_tab.DriveSystemTab()
+    pivot_bearing_tab = pivot_bearing_view.PivotBearingTab()
+    drive_system_tab = drivesystem_view.DriveSystemTab()
     piezo_tab = piezo_tab.PiezoTab()
 
     common_block = common_block_controller.CommonBlockController(terminal)
@@ -72,7 +72,7 @@ if __name__ == "__main__":
     window.addTabView(tower_variant.view, "TowerVariant")
     window.addTabView(common_block.view, "Common Block")
     window.addTabView(pivot_bearing_tab, "Pivot Bearing")
-    window.addTabView(drivesystem_tab, "Drive System")
+    window.addTabView(drive_system_tab, "Drive System")
     window.addTabView(piezo_tab, "Piezo")
 
 
@@ -88,6 +88,18 @@ if __name__ == "__main__":
         controller = piezo_variant_controller.PiezoVariantController(index, terminal)
         piezo_variant_controllers.append(controller)
         piezo_variant_tab.register_tab(controller.view)
+
+    pivot_bearing_controllers = []
+    for index in range(2):
+        controller = pivot_bearing_controller.PivotBearingController(index, terminal)
+        pivot_bearing_controllers.append(controller)
+        pivot_bearing_tab.register_tab(controller.view)
+
+    drive_system_controllers = []
+    for index in range(2):
+        controller = drive_system_controller.DriveSystemController(index, terminal)
+        drive_system_controllers.append(controller)
+        drive_system_tab.register_tab(controller.view)
 
         
  
