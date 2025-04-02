@@ -1,4 +1,4 @@
-class CommonBlockModel():
+class PiezoModel():
 
     def __init__(self):
         self.categories = []

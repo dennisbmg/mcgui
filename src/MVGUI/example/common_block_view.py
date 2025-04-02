@@ -24,7 +24,6 @@ class CommonBlockView(QWidget):
         if tab_name not in self.inner_views:
             inner_widget = QWidget()
             inner_layout = QGridLayout()
-            inner_layout.setSpacing(10)
             inner_widget.setLayout(inner_layout)
 
             self.inner_tabs.addTab(inner_widget, tab_name)
@@ -51,7 +50,7 @@ class CommonBlockView(QWidget):
         self.input[param_name] = input
         self.setButtons[param_name] = button
 
-        data["layout"].addWidget(label, row, column_label, alignment=Qt.AlignLeft)
+        data["layout"].addWidget(label, row, column_label)
         data["layout"].addWidget(input, row, column_input)
         data["layout"].addWidget(button, row, column_button)
 

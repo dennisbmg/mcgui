@@ -114,7 +114,7 @@ class DriveSystemController():
             
     def get_global_param(self, data):
         param = data["GlobalName"]
-        x = param.replace("<index>", str(self.index))
+        x = param.replace("<<index>>", str(self.index))
         return x
     
     def build_commands(self):

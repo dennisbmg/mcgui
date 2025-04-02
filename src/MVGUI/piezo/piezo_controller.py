@@ -1,15 +1,15 @@
 from PyQt5.QtWidgets import QDoubleSpinBox, QLineEdit, QPushButton, QLabel, QSpinBox
-from . import commonblock_tab
-from . import commonblock_model
+from . import piezo_model
+from . import piezo_view
 import yaml
 
 
-class CommonBlockController():
+class PiezoController():
     def __init__(self, index, terminal):
         self.index = index
         self.terminal = terminal
 
-        self.config_data = self.read_config("common_block_config.yaml")
+        self.config_data = self.read_config("piezo_config.yaml")
         self.data_types = self.get_datatypes("datatypes.yaml")
         self.global_param = self.get_global_param(self.config_data)
         self.categories = self.get_categories(self.config_data)
@@ -19,47 +19,47 @@ class CommonBlockController():
         for key in self.categories:
             self.is_valid[key] = False
 
-        self.view = commonblock_tab.CommonBlockView() 
-        self.model = commonblock_model.CommonBlockModel()
+        self.view = piezo_view.PiezoView()
+        self.model = piezo_model.PiezoModel()
         
-#        for key in self.categories:
-##            if self.config_data[key]["Type"] == "char":
-#                self.view.add_item(key, QLineEdit)
-#
-#                # had a problem with callbacks not returning the expected key 
-#                # assining key to value first is a workaround to get the expected key
-#                self.view.input[key].textChanged.connect(lambda value=key, key=key: self.text_input_changed(key))
-#                self.view.setButtons[key].clicked.connect(lambda value=key, key=key: self.button_pressed_text(key))
-#            elif self.config_data[key]["Type"] == "string":
-#                self.view.add_item(key, QLineEdit)
-#
-#                self.view.input[key].textChanged.connect(lambda value=key, key=key: self.text_input_changed(key))
-#                self.view.setButtons[key].clicked.connect(lambda value=key, key=key: self.button_pressed_text(key))
-#            elif self.config_data[key]["Type"] == "float":
-#                self.view.add_item(key, QDoubleSpinBox)
-#
-#                self.view.input[key].valueChanged.connect(lambda value=key, key=key: self.number_input_changed(key))
-#                self.view.setButtons[key].clicked.connect(lambda value=key, key=key: self.button_pressed_text(key))
-#            elif "int" in self.config_data[key]["Type"]:
-#                self.view.add_item(key, QSpinBox)
-#
-#                self.view.input[key].valueChanged.connect(lambda value=key, key=key: self.number_input_changed(key))
-#                self.view.setButtons[key].clicked.connect(lambda value=key, key=key: self.button_pressed_number(key))
-#
-#            min = self.config_data[key]["Range"]["min"]
-#            if min == "MIN":
-#                min = self.data_types[self.config_data[key]["Type"]]["min"]
-#            
-#            max = self.config_data[key]["Range"]["max"]  
-#            if max == "MAX":
-#                max = self.config_data[key]["Range"]["max"]  
-#
-#            if self.config_data[key]["ValidCallback"] == "range" or self.config_data[key]["ValidCallback"] == "string":
-#                self.model.add_data_range(key, min, max, self.config_data[key]["ValidCallback"])
-#
-#            elif self.config_data[key]["ValidCallback"] == list:
-#                self.model.add_data_range(key, min, max, self.config_data[key]["Range"])
-#
+        for key in self.categories:
+            if self.config_data[key]["Type"] == "char":
+                self.view.add_item(key, QLineEdit)
+
+                # had a problem with callbacks not returning the expected key 
+                # assining key to value first is a workaround to get the expected key
+                self.view.input[key].textChanged.connect(lambda value=key, key=key: self.text_input_changed(key))
+                self.view.setButtons[key].clicked.connect(lambda value=key, key=key: self.button_pressed_text(key))
+            elif self.config_data[key]["Type"] == "string":
+                self.view.add_item(key, QLineEdit)
+
+                self.view.input[key].textChanged.connect(lambda value=key, key=key: self.text_input_changed(key))
+                self.view.setButtons[key].clicked.connect(lambda value=key, key=key: self.button_pressed_text(key))
+            elif self.config_data[key]["Type"] == "float":
+                self.view.add_item(key, QDoubleSpinBox)
+
+                self.view.input[key].valueChanged.connect(lambda value=key, key=key: self.number_input_changed(key))
+                self.view.setButtons[key].clicked.connect(lambda value=key, key=key: self.button_pressed_text(key))
+            elif "int" in self.config_data[key]["Type"]:
+                self.view.add_item(key, QSpinBox)
+
+                self.view.input[key].valueChanged.connect(lambda value=key, key=key: self.number_input_changed(key))
+                self.view.setButtons[key].clicked.connect(lambda value=key, key=key: self.button_pressed_number(key))
+
+            min = self.config_data[key]["Range"]["min"]
+            if min == "MIN":
+                min = self.data_types[self.config_data[key]["Type"]]["min"]
+            
+            max = self.config_data[key]["Range"]["max"]  
+            if max == "MAX":
+                max = self.data_types[self.config_data[key]["Type"]]["max"]
+
+            if self.config_data[key]["ValidCallback"] == "range" or self.config_data[key]["ValidCallback"] == "string":
+                self.model.add_data_range(key, min, max, self.config_data[key]["ValidCallback"])
+
+            elif self.config_data[key]["ValidCallback"] == list:
+                self.model.add_data_range(key, min, max, self.config_data[key]["Range"])
+
 
 #            print(f"Key: {key} min: {min} max: {max} callback: {self.config_data[key]['ValidCallback']}")
             

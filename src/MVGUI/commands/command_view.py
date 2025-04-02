@@ -6,7 +6,6 @@ class CommandView(QWidget):
     def __init__(self):
         super().__init__()
         self.grid = QGridLayout()
-        self.grid.setSpacing(5)
 #        self.terminal = Terminal()
         self.combobox_items = ["-","A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"]
 

@@ -24,17 +24,16 @@ class DriveSystemView(QWidget):
         super().__init__()
 
         self.grid = QGridLayout()
-        self.grid.setSpacing(100)
 
         self.labels = {}
         self.input = {}
         self.setButtons = {}
         self.buttonAll = QPushButton("SetAll")
         self.buttonAll.setDisabled(True)
-        self.grid.addWidget(self.buttonAll,5, 2, alignment=Qt.AlignLeft)
+        self.row = 0
+        self.grid.addWidget(self.buttonAll, 100, 2)
         self.setLayout(self.grid)
 
-        self.row = 0
         
         
     def add_item(self, name, input_element):
@@ -44,17 +43,17 @@ class DriveSystemView(QWidget):
 
         label = QLabel()
         label.setText(name)
-        self.grid.addWidget(label, self.row, column_label, alignment=Qt.AlignCenter)
+        self.grid.addWidget(label, self.row, column_label)
         self.labels[name] = label
 
         input = input_element()
-        self.grid.addWidget(input, self.row, column_input, alignment=Qt.AlignCenter)
+        self.grid.addWidget(input, self.row, column_input)
         self.input[name] = input
 #        print(f"DEBUG: Created input widget for {name}: {type(input)}")       
 
         button = QPushButton("Set")
         button.setDisabled(True)
-        self.grid.addWidget(button, self.row, column_button, alignment=Qt.AlignCenter)
+        self.grid.addWidget(button, self.row, column_button)
         self.setButtons[name] = button
 
         self.row += 1

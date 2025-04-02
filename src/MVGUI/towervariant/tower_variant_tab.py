@@ -7,7 +7,6 @@ class TowerVariantTab(QWidget):
 
         self.layout = QVBoxLayout(self)
         self.tabs = QTabWidget()
-        self.tabs.resize(300,200)
 
         self.layout.addWidget(self.tabs)
         self.setLayout(self.layout)
@@ -20,7 +19,6 @@ class TowerVariantView(QWidget):
         super().__init__()
 
         self.grid = QGridLayout()
-        self.grid.setSpacing(100)
 
         self.labels = {}
         self.input = {}
@@ -39,19 +37,19 @@ class TowerVariantView(QWidget):
         column_button = 2
         label = QLabel()
         label.setText(name)
-        self.grid.addWidget(label, self.row, column_label, alignment=Qt.AlignCenter)
+        self.grid.addWidget(label, self.row, column_label)
         self.labels[name] = label
 
         input = input_element()
         label.setText(name)
-        self.grid.addWidget(input, self.row, column_input, alignment=Qt.AlignCenter)
+        self.grid.addWidget(input, self.row, column_input)
         self.input[name] = input
 #        print(f"DEBUG: Created input widget for {name}: {type(input)}")       
 
         button = QPushButton("Set")
         button.setDisabled(True)
         label.setText(name)
-        self.grid.addWidget(button, self.row, column_button, alignment=Qt.AlignCenter)
+        self.grid.addWidget(button, self.row, column_button)
         self.setButtons[name] = button
 
         self.row += 1

@@ -21,7 +21,7 @@ from Piezovariant import piezo_variant_tab, piezo_variant_controller
 from towervariant import tower_variant_controller
 from pivotbearing import pivot_bearing_view, pivot_bearing_controller
 from drivesystem import drivesystem_view, drive_system_controller
-from piezo import piezo_tab
+from piezo import piezo_view, piezo_controller
 from terminal import Terminal
 import logging
 
@@ -62,7 +62,7 @@ if __name__ == "__main__":
     motor_variant_tab = motor_variant_tab.MotorVariantTab()
     pivot_bearing_tab = pivot_bearing_view.PivotBearingTab()
     drive_system_tab = drivesystem_view.DriveSystemTab()
-    piezo_tab = piezo_tab.PiezoTab()
+    piezo_tab = piezo_view.PiezoTab()
 
     common_block = common_block_controller.CommonBlockController(terminal)
 
@@ -100,6 +100,12 @@ if __name__ == "__main__":
         controller = drive_system_controller.DriveSystemController(index, terminal)
         drive_system_controllers.append(controller)
         drive_system_tab.register_tab(controller.view)
+
+    piezo_controllers = []
+    for index in range(3):
+        controller = piezo_controller.PiezoController(index, terminal)
+        piezo_controllers.append(controller)
+        piezo_tab.register_tab(controller.view)
 
         
  

@@ -1,0 +1,88 @@
+GlobalName:
+  PiezoData[<index>]
+MagicNumber:
+  Type:
+    uint8
+  Range:
+    max: MAX
+    min: MIN
+  ValidCallback:
+    range
+Velo[0]:
+  Type:
+    uint8
+  Range:
+    max: MAX
+    min: MIN
+  ValidCallback:
+    range
+Velo[1]:
+  Type:
+    uint8
+  Range:
+    max: MAX
+    min: MIN
+  ValidCallback:
+    range
+Triangle.Amplitude:
+  Type:
+    uint16
+  Range:
+    max: MAX
+    min: MIN
+  ValidCallback:
+    range
+Triangle.Offset:
+  Type:
+    uint16
+  Range:
+    max: MAX
+    min: MIN
+  ValidCallback:
+    range
+Triangle.Frequenz:
+  Type:
+    uint16
+  Range:
+    max: MAX
+    min: MIN
+  ValidCallback:
+    range
+RampValue:
+  Type:
+    uint8
+  Range:
+    max: MAX
+    min: MIN
+  ValidCallback:
+    range
+DecelerationRamp:
+  Type:
+    uint8
+  Range:
+    max: MAX
+    min: MIN
+  ValidCallback:
+    range
+LastDac:
+  Type:
+    uint16
+  Range:
+    max: MAX
+    min: MIN
+  ValidCallback:
+    range
+
+# check value in range: range
+# check value of string is less then max characters: string
+# check value is in list: list
+# if list: replace max and min with a list of valid values
+# for example: 
+#
+# DriveLabel:
+#   Type:
+#     char/uint8
+#   Range:
+#     - A/4
+#     - B/7
+#     - C/8
