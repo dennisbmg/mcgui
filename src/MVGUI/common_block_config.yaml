@@ -1,7 +1,7 @@
 GlobalName:
   CommonBlock
 General:
-  SavelastDACvalue:
+  SaveLastDACvalue:
     Type:
       uint8
     Range:
