@@ -14,7 +14,7 @@ Author: Name (mail)
 import sys
 from PyQt5.QtWidgets import QApplication, QSpinBox, QDoubleSpinBox
 import mainwindow
-from example import common_block_controller
+from common_block import common_block_controller
 from commands import command_controller
 from motorvariant import motor_variant_tab, motor_config_controller
 from Piezovariant import piezo_variant_tab, piezo_variant_controller
