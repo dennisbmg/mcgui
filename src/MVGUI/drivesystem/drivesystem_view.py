@@ -5,11 +5,11 @@ class DriveSystemTab(QWidget):
     def __init__(self):
         super().__init__()
 
-        self.layout = QVBoxLayout(self)
+        layout = QVBoxLayout(self)
         self.tabs = QTabWidget()
 
-        self.layout.addWidget(self.tabs)
-        self.setLayout(self.layout)
+        layout.addWidget(self.tabs)
+        self.setLayout(layout)
 
         self.noTabs = 0
        

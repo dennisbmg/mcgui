@@ -12,12 +12,12 @@ Author: Name (mail)
 # Imports **********************************************************************
 
 import sys
-from PyQt5.QtWidgets import QApplication, QSpinBox, QDoubleSpinBox
+from PyQt5.QtWidgets import QApplication
 import mainwindow
 from common_block import common_block_controller
 from commands import command_controller
-from motorvariant import motor_variant_tab, motor_config_controller
-from Piezovariant import piezo_variant_tab, piezo_variant_controller
+from motorvariant import motor_variant_view, motor_config_controller
+from Piezovariant import piezo_variant_view, piezo_variant_controller
 from towervariant import tower_variant_controller
 from pivotbearing import pivot_bearing_view, pivot_bearing_controller
 from drivesystem import drivesystem_view, drive_system_controller
@@ -57,14 +57,14 @@ if __name__ == "__main__":
     #calling controller directly because we have no tabs to care about
     command = command_controller.CommandController(terminal)
     tower_variant = tower_variant_controller.TowerVariantController(terminal)
+    common_block = common_block_controller.CommonBlockController(terminal)
 
-    piezo_variant_tab = piezo_variant_tab.PiezoVariantTab()
-    motor_variant_tab = motor_variant_tab.MotorVariantTab()
+    piezo_variant_tab = piezo_variant_view.PiezoVariantTab()
+    motor_variant_tab = motor_variant_view.MotorVariantTab()
     pivot_bearing_tab = pivot_bearing_view.PivotBearingTab()
     drive_system_tab = drivesystem_view.DriveSystemTab()
     piezo_tab = piezo_view.PiezoTab()
 
-    common_block = common_block_controller.CommonBlockController(terminal)
 
     window.addTabView(command.view, "Commands")
     window.addTabView(motor_variant_tab, "MotorVairant")
@@ -106,10 +106,6 @@ if __name__ == "__main__":
         controller = piezo_controller.PiezoController(index, terminal)
         piezo_controllers.append(controller)
         piezo_tab.register_tab(controller.view)
-
-        
- 
-
 
     window.show()
 

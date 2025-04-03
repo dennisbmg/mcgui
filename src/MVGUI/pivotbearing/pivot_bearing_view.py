@@ -5,11 +5,11 @@ class PivotBearingTab(QWidget):
     def __init__(self):
         super().__init__()
 
-        self.layout = QVBoxLayout(self)
+        layout = QVBoxLayout(self)
         self.tabs = QTabWidget()
 
-        self.layout.addWidget(self.tabs)
-        self.setLayout(self.layout)
+        layout.addWidget(self.tabs)
+        self.setLayout(layout)
 
         self.noTabs = 0
        
@@ -24,11 +24,11 @@ class PivotBearingView(QWidget):
         super().__init__()
 
 
-        self.layout = QVBoxLayout()
-        self.setLayout(self.layout)
+        layout = QVBoxLayout()
+        self.setLayout(layout)
 
         self.inner_tabs = QTabWidget()
-        self.layout.addWidget(self.inner_tabs)
+        layout.addWidget(self.inner_tabs)
 
         self.inner_views = {}  # Track each tab's UI data
         self.labels = {}

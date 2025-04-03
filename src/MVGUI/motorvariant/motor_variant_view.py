@@ -5,11 +5,11 @@ class MotorVariantTab(QWidget):
     def __init__(self):
         super().__init__()
 
-        self.layout = QVBoxLayout(self)
+        layout = QVBoxLayout(self)
         self.tabs = QTabWidget()
 
-        self.layout.addWidget(self.tabs)
-        self.setLayout(self.layout)
+        layout.addWidget(self.tabs)
+        self.setLayout(layout)
 
         self.noTabs = 0
        
@@ -45,11 +45,15 @@ class MotorConfigView(QWidget):
         label.setText(name)
         self.grid.addWidget(label, self.row, column_label)
         self.labels[name] = label
+        
 
+        print(f"Arg input_element: {input_element}")
+        print(f"QSpinbox: {QSpinBox}")
         input = input_element()
+        print(f"Input Motor Variant {input}")
+
         self.grid.addWidget(input, self.row, column_input)
         self.input[name] = input
-#        print(f"DEBUG: Created input widget for {name}: {type(input)}")       
 
         button = QPushButton("Set")
         button.setDisabled(True)

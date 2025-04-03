@@ -1,25 +1,20 @@
 from PyQt5.QtWidgets import QComboBox, QDoubleSpinBox, QSpinBox, QWidget, QTabWidget, QVBoxLayout, QGridLayout, QPushButton, QLabel, QLineEdit
 from PyQt5.Qt import Qt
 
-class PiezoVariantTab(QWidget):
+class TowerVariantTab(QWidget):
     def __init__(self):
         super().__init__()
 
-        self.layout = QVBoxLayout(self)
+        layout = QVBoxLayout(self)
         self.tabs = QTabWidget()
 
-        self.layout.addWidget(self.tabs)
-        self.setLayout(self.layout)
+        layout.addWidget(self.tabs)
+        self.setLayout(layout)
 
         self.noTabs = 0
        
 
-    def register_tab(self, tab):
-        self.tabs.addTab(tab, f"Piezo Variant {self.noTabs}")
-        #count for every tab that gets registered 
-        self.noTabs += 1
-
-class PiezoVariantView(QWidget):
+class TowerVariantView(QWidget):
     def __init__(self):
         super().__init__()
 
@@ -30,7 +25,7 @@ class PiezoVariantView(QWidget):
         self.setButtons = {}
         self.buttonAll = QPushButton("SetAll")
         self.buttonAll.setDisabled(True)
-        self.grid.addWidget(self.buttonAll,5, 2)
+        self.grid.addWidget(self.buttonAll,5, 2, alignment=Qt.AlignLeft)
         self.setLayout(self.grid)
 
         self.row = 0
@@ -58,4 +53,3 @@ class PiezoVariantView(QWidget):
         self.setButtons[name] = button
 
         self.row += 1
-

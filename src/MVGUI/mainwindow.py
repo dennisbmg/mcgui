@@ -1,5 +1,5 @@
-from PyQt5.QtCore import QSize, Qt
-from PyQt5.QtWidgets import QMainWindow
+from PyQt5.QtCore import QSize
+from PyQt5.QtWidgets import QMainWindow, QMenuBar
 import master_tab
 
 
@@ -10,12 +10,14 @@ class App(QMainWindow):
         self.title = "MC GUI" 
         self.left = 0
         self.top = 0
-        self.height = 0
-        self.width = 670
+        height = 0
+        width = 670
+        size = QSize(width, height)
         self.setWindowTitle(self.title)
-        self.setGeometry(self.left, self.top, self.width, self.height)
+        self.setGeometry(self.left, self.top, size.width(), size.height())
 
-        self.menu_bar = self.menuBar()
+        self.menu_bar = QMenuBar(self)
+        self.setMenuBar(self.menu_bar)
         self.connect_menu = self.menu_bar.addMenu("Connect")
 
         

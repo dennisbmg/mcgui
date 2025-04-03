@@ -6,12 +6,12 @@ class MasterTabView(QWidget):
     def __init__(self):
         super().__init__()
 
-        self.layout = QVBoxLayout(self)
+        layout = QVBoxLayout(self)
 
         self.setWindowTitle("My App")
         self.tabs = QTabWidget()
         self.tabs.resize(300,200)
 
-        self.layout.addWidget(self.tabs)
-        self.setLayout(self.layout)
+        layout.addWidget(self.tabs)
+        self.setLayout(layout)
 
