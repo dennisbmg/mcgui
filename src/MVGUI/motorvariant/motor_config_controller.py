@@ -1,5 +1,5 @@
 from PyQt5.QtWidgets import QDoubleSpinBox, QLineEdit, QPushButton, QLabel, QSpinBox
-from . import motor_variant_tab
+from . import motor_variant_view
 from . import motor_config_model
 import yaml
 
@@ -19,7 +19,7 @@ class MotorConfigController():
         for key in self.categories:
             self.is_valid[key] = False
 
-        self.view = motor_variant_tab.MotorConfigView()
+        self.view = motor_variant_view.MotorConfigView()
         self.model = motor_config_model.MotorConfigModel()
         
         for key in self.categories:

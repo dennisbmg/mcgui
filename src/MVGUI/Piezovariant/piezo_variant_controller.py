@@ -1,5 +1,5 @@
 from PyQt5.QtWidgets import QDoubleSpinBox, QLineEdit, QPushButton, QLabel, QSpinBox
-from . import piezo_variant_tab
+from . import piezo_variant_view
 from . import piezo_variant_model
 import yaml
 
@@ -19,7 +19,7 @@ class PiezoVariantController():
         for key in self.categories:
             self.is_valid[key] = False
 
-        self.view = piezo_variant_tab.PiezoVariantView()
+        self.view = piezo_variant_view.PiezoVariantView()
         self.model = piezo_variant_model.PiezoVariantModel()
         
         for key in self.categories:

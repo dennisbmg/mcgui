@@ -1,5 +1,5 @@
 from PyQt5.QtWidgets import QDoubleSpinBox, QLineEdit, QPushButton, QLabel, QSpinBox
-from . import tower_variant_tab
+from . import tower_variant_view
 from . import tower_variant_model
 import yaml
 
@@ -21,7 +21,7 @@ class TowerVariantController():
         for key in self.categories:
             self.is_valid[key] = False
 
-        self.view = tower_variant_tab.TowerVariantView()
+        self.view = tower_variant_view.TowerVariantView()
         self.model = tower_variant_model.TowerVariantModel()
         
         for key in self.categories:
