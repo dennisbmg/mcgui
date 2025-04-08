@@ -1,5 +1,4 @@
 from PyQt5.QtWidgets import QComboBox, QDoubleSpinBox, QSpinBox, QWidget, QTabWidget, QVBoxLayout, QGridLayout, QPushButton, QLabel, QLineEdit
-from PyQt5.Qt import Qt
 
 class MotorVariantTab(QWidget):
     def __init__(self):
@@ -41,16 +40,17 @@ class MotorConfigView(QWidget):
         column_input = 1
         column_button = 2
 
-        label = QLabel()
-        label.setText(name)
+        label = QLabel(name)
         self.grid.addWidget(label, self.row, column_label)
         self.labels[name] = label
         
 
-        print(f"Arg input_element: {input_element}")
-        print(f"QSpinbox: {QSpinBox}")
-        input = input_element()
-        print(f"Input Motor Variant {input}")
+        if input_element == QSpinBox or input_element == QDoubleSpinBox:
+            print(f"im in if thats the input_element: {input_element}")
+            input = input_element()
+            input.setMaximum(10000)
+        else:
+            input = input_element()
 
         self.grid.addWidget(input, self.row, column_input)
         self.input[name] = input

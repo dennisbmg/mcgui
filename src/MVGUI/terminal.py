@@ -10,7 +10,7 @@ class TerminalWorker(QThread):
         super().__init__()
         self.port = port
         self.baudrate = baudrate
-        self.ser = None
+        # self.ser = None
         self.running = False
         self.command_queue = []
         self.mutex = QMutex()  # Ensure thread safety
@@ -50,7 +50,7 @@ class TerminalWorker(QThread):
             # Wait for response with a timeout
             start_time = time.time()
             response = b""
-            while time.time() - start_time < 1:  # 2 seconds timeout
+            while time.time() - start_time < 2:  # 2 seconds timeout
                 if self.ser.in_waiting:
                     response += self.ser.read(self.ser.in_waiting)
                 time.sleep(0.05)  # Small delay to reduce CPU usage

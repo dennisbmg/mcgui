@@ -60,11 +60,6 @@ class MotorConfigController():
             elif self.config_data[key]["ValidCallback"] == list:
                 self.model.add_data_range(key, min, max, self.config_data[key]["Range"])
 
-
-#            print(f"Key: {key} min: {min} max: {max} callback: {self.config_data[key]['ValidCallback']}")
-            
-
-
     def text_input_changed(self, name):
         input_text = self.view.input[name].text()
         is_valid = self.model.is_valid(name, input_text)
@@ -96,7 +91,6 @@ class MotorConfigController():
     def updateAllButton(self):
         allEnabled = True
         for key, flag in self.is_valid.items():
-            #print(f"{key} {flag}")
             allEnabled = allEnabled and flag
         self.view.buttonAll.setEnabled(allEnabled)
 
