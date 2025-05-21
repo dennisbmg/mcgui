@@ -2,7 +2,7 @@
 
 Enter detailed module description here
 
-Author: Name (mail)
+Author: Dennis Baumgärtner (dennis.baumgaertner@newtec.de)
 """
 
 # *******************************************************************************

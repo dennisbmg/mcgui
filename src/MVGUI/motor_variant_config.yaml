@@ -33,9 +33,9 @@ DriveName:
   ValidCallback:
    range
 
-# check value in range: range
-# check value of string is less then max characters: string
-# check value is in list: list
+# check if a value is in range: ValidCallback has to be "range"
+# check if a String has less then MAX chars: ValidCallback has to be "string"
+# check if a value is in the list of valid values: ValidCallback has to be "list"
 # if list: replace max and min with a list of valid values
 # for example: 
 #
@@ -46,3 +46,5 @@ DriveName:
 #     - A/4
 #     - B/7
 #     - C/8
+#   ValidCallback:
+#     list

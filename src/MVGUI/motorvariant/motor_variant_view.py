@@ -40,21 +40,23 @@ class MotorConfigView(QWidget):
         column_input = 1
         column_button = 2
 
-        label = QLabel(name)
+        # label with name of param gets added to the first column here 
+        label = QLabel(name) 
         self.grid.addWidget(label, self.row, column_label)
         self.labels[name] = label
         
 
+        # input with specified input_element gets added in the second column
         if input_element == QSpinBox or input_element == QDoubleSpinBox:
-            print(f"im in if thats the input_element: {input_element}")
             input = input_element()
-            input.setMaximum(10000)
+            input.setMaximum(100000000) #setting maximum to 100000000 because default is 99 
         else:
             input = input_element()
 
         self.grid.addWidget(input, self.row, column_input)
         self.input[name] = input
 
+        # button gets added in the third column here
         button = QPushButton("Set")
         button.setDisabled(True)
         self.grid.addWidget(button, self.row, column_button)
