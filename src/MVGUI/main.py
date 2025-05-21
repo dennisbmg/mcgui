@@ -16,7 +16,7 @@ from PyQt5.QtWidgets import QApplication
 import mainwindow
 from common_block import common_block_controller
 from commands import command_controller
-from motorvariant import motor_variant_view, motor_config_controller
+from motorvariant import motorvariant_view, motorvariant_controller
 from Piezovariant import piezo_variant_view, piezo_variant_controller
 from towervariant import tower_variant_controller
 from pivotbearing import pivot_bearing_view, pivot_bearing_controller
@@ -60,7 +60,7 @@ if __name__ == "__main__":
     common_block = common_block_controller.CommonBlockController(terminal)
 
     piezo_variant_tab = piezo_variant_view.PiezoVariantTab()
-    motor_variant_tab = motor_variant_view.MotorVariantTab()
+    motor_variant_tab = motorvariant_view.MotorVariantTab()
     pivot_bearing_tab = pivot_bearing_view.PivotBearingTab()
     drive_system_tab = drivesystem_view.DriveSystemTab()
     piezo_tab = piezo_view.PiezoTab()
@@ -79,7 +79,7 @@ if __name__ == "__main__":
 
     motor_controllers = []
     for index in range(2):
-        controller = motor_config_controller.MotorConfigController(index, terminal)
+        controller = motorvariant_controller.MotorConfigController(index, terminal)
         motor_controllers.append(controller)
         motor_variant_tab.register_tab(controller.view)
 
