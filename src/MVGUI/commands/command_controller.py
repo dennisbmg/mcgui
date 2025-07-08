@@ -1,12 +1,15 @@
+from PyQt5.QtCore import pyqtSignal
 from . import command_view
 from PyQt5.QtWidgets import QWidget
 
 class CommandController(QWidget):
+    statusbar_update = pyqtSignal(str)
     def __init__(self, terminal):
         super().__init__()
         self.view = command_view.CommandView()
         self.terminal = terminal
-        
+
+
         self.terminal.response_received.connect(self.display_response)
         self.terminal.error_occurred.connect(self.display_error)
 
@@ -20,6 +23,7 @@ class CommandController(QWidget):
     
     def display_response(self, response):
         self.view.box_eeprom_output.append(response)
+        self.statusbar_update.emit(response)
 
     def display_error(self, error_message):
         self.view.box_eeprom_output.append(f"Error: {error_message}")

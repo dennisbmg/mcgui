@@ -9,7 +9,7 @@ class TowerVariantController():
         self.terminal = terminal
         self.index = 0
 
-        self.config_data = self.read_config("tower_variant_config.yaml")
+        self.config_data = self.read_config("config_files/tower_variant_config.yaml")
         self.data_types = self.get_datatypes("datatypes.yaml")
         self.global_param = self.get_global_param(self.config_data)
         self.categories = self.get_categories(self.config_data)

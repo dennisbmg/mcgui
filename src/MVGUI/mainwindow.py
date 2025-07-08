@@ -20,6 +20,9 @@ class App(QMainWindow):
         self.setMenuBar(self.menu_bar)
         self.connect_menu = self.menu_bar.addMenu("Connect")
 
+        self.statusBar().showMessage("Ready")
+
+
         
         self.table_widget = master_tab.MasterTabView()
         self.setCentralWidget(self.table_widget)
@@ -29,3 +32,7 @@ class App(QMainWindow):
 
     def addTabView(self, tab, name):
         self.table_widget.tabs.addTab(tab, name)
+
+    def update_statusbar(self, message):
+        self.statusBar().showMessage(message)
+

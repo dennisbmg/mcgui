@@ -1,12 +1,13 @@
 from PyQt5.QtWidgets import QWidget, QLabel, QPushButton, QGridLayout, QComboBox, QTextEdit
 from PyQt5.Qt import Qt
 from terminal import Terminal
+from mainwindow import App
 
 class CommandView(QWidget):
     def __init__(self):
         super().__init__()
         self.grid = QGridLayout()
-#        self.terminal = Terminal()
+        # self.terminal = Terminal()
         self.combobox_items = ["-","A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"]
 
         self.lbl_eeprom_read = QLabel("EEPROM READ", self)
@@ -34,7 +35,7 @@ class CommandView(QWidget):
         self.box_eeprom_output = QTextEdit()
         self.grid.addWidget(self.box_eeprom_output, 3, 0, 15, 3)
 
-        
+
 
         self.load_style()
 
@@ -46,15 +47,3 @@ class CommandView(QWidget):
             stylesheet = file.read()
 
         self.setStyleSheet(stylesheet)
-
-#    def display_response(self):
-#        self.box_eeprom_output.clear()
-##        while True:
-#            line = self.terminal.ser.readline().decode("utf-8")
-#            if not line:
-#                break
-#            self.box_eeprom_output.append(line)
-        
-
-
-

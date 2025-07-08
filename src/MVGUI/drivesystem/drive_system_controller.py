@@ -9,7 +9,7 @@ class DriveSystemController():
         self.index = index
         self.terminal = terminal
 
-        self.config_data = self.read_config("drive_system_config.yaml")
+        self.config_data = self.read_config("config_files/drive_system_config.yaml")
         self.data_types = self.get_datatypes("datatypes.yaml")
         self.global_param = self.get_global_param(self.config_data)
         self.categories = self.get_categories(self.config_data)

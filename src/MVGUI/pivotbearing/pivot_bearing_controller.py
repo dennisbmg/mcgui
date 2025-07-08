@@ -11,7 +11,7 @@ class PivotBearingController:
         self.terminal = terminal
         self.index = index
 
-        self.config_data = self.read_config("pivot_bearing_config.yaml")
+        self.config_data = self.read_config("config_files/pivot_bearing_config.yaml")
         self.data_types = self.get_datatypes("datatypes.yaml")
         self.categories = self.get_categories(self.config_data)
         self.global_param = self.get_global_param(self.config_data)

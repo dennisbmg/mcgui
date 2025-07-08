@@ -9,7 +9,7 @@ class CommonBlockController:
         self.model = common_block_model.CommonBlockModel()
         self.terminal = terminal
 
-        self.config_data = self.read_config("common_block_config.yaml")
+        self.config_data = self.read_config("config_files/common_block_config.yaml")
         self.data_types = self.get_datatypes("datatypes.yaml")
         self.categories = self.get_categories(self.config_data)
         self.global_param = self.get_global_param(self.config_data)

@@ -1,13 +1,5 @@
 # NewTec Python Template
-
----
-For details how to use this template, see [template_usage](template_usage.md)
-
-Delete this section when the template is customised for a specific project
-
----
-
-[![License](https://img.shields.io/badge/license-bsd-3.svg)](https://choosealicense.com/licenses/bsd-3-clause/) [![Repo Status](https://www.repostatus.org/badges/latest/wip.svg)](https://www.repostatus.org/#wip) [![CI](https://github.com/NewTec-GmbH/template_python/actions/workflows/test.yml/badge.svg)](https://github.com/NewTec-GmbH/template_python/actions/workflows/test.yml)
+[![Repo Status](https://www.repostatus.org/badges/latest/wip.svg)](https://www.repostatus.org/#wip) 
 
 - [Overview](#overview)
 - [Installation](#installation)
