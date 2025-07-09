@@ -17,7 +17,7 @@ class App(QMainWindow):
         width = 670
         size = QSize(width, height)
         self.init_menu()
-        self.terminal =  Terminal()
+        self.terminal =  Terminal
 
         self.setWindowTitle(self.title)
         self.setGeometry(self.left, self.top, size.width(), size.height())
