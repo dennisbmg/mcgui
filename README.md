@@ -7,7 +7,6 @@
 - [Usage](#usage)
 - [Features](#features)
 - [Examples](#examples)
-- [Software Documentation](#software-documentation)
 - [Used Libraries](#used-libraries)
 - [Issues, Ideas and Bugs](#issues-ideas-and-bugs)
 
@@ -56,17 +55,6 @@ python main.py
 - Set and read parameters via the Command tab
 - Configure motor and piezo parameters
 - Dynamic display and validation of input fields according to configuration
-
-## Software Documentation
-
-More information on deployment and architecture can be found in the [documentation](./doc/README.md).
-
-For detailed software design, run:
-
-```bash
-cd doc/detailed-design
-make html
-```
 
 The generated documentation can then be found in `/doc/detailed-design/_build/html/index.html`.
 
