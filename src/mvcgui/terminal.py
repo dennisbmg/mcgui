@@ -88,12 +88,18 @@ class Terminal(QObject):
     def __init__(self, port="COM4", baudrate=115200):
         super().__init__()
         self.worker = TerminalWorker(port, baudrate)
-    
         self.worker.response_received.connect(self.response_received)
         self.worker.error_occurred.connect(self.error_occurred)
-    
 
         self.worker.start()
+
+    def connect(self, port="COM4", baudrate=115200):
+            if hasattr(self, 'worker') and self.worker is not None:
+                self.worker.stop()
+            self.worker = TerminalWorker(port, baudrate)
+            self.worker.response_received.connect(self.response_received)
+            self.worker.error_occurred.connect(self.error_occurred)
+            self.worker.start()
 
 
 

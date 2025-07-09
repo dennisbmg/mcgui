@@ -25,3 +25,4 @@ class SerialConnectDialog(QDialog):
 
     def get_selection(self):
         return self.port_combo.currentText(), int(self.baudrate_edit.text())
+
