@@ -16,7 +16,7 @@
 This project is a modular Python GUI application based on PyQt5, following the Model-View-Controller (MVC) pattern. It is designed for easy extension with new hardware modules and configuration tabs. The GUI communicates with hardware via serial interface and loads its structure dynamically from YAML configuration files.
 
 **Main modules:**
-- Motorvariant
+- MotorVariant
 - PiezoVariant
 - TowerVariant
 - PivotBearing
